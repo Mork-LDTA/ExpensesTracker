@@ -1,105 +1,120 @@
 .left-side, .right-side {
-    display: flex;
-    width: 50vw;
-    height: 95vh;
-    margin: 1vh 2vw;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-  }
-  
-  .left-side {
-    flex-direction: column;
-    justify-content: space-around;
-  }
-  
-  .cadastro {
-    display: flex;
-    justify-content: end;
-    width: 100%;
-    font-size: small;
-  }
-  
-  #text-start {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    width: 100%;
-  }
-  
-  #text-start p {
-    font-size: small;
-  }
-  
-  .join-with-web {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    gap: 5vw;
-  }
-  
-  .join-with-web button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 8vh;
-    gap: 1vw;
-    background-color: transparent;
-    padding: 1vw;
-  }
-  
-  .div-for-login {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    gap: 2vw;
-  }
-  
-  .login-place {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .login-place input {
-    height: 8vh;
-    border: 1px solid black;
-    border-radius: 5px;
-  }
-  
-  .login-place input::placeholder {
-    padding: 0px 1vw;
-  }
-  
-  .toggle-password {
-    position: absolute;
-    bottom: 27.5vh;
-    left: 45vw;
-    cursor: pointer;
-    user-select: none;
-  }
-  
-  .miss-password {
-    display: flex;
-    justify-content: end;
-    font-size: small;
-    margin-top: 1vh;
-  }
-  
-  .join-btn {
-    background-color: blue;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    height: 8vh;
-  }
-  
-  .right-side {
-    background-color: blue;
-    border: none;
-    border-radius: 10px;
-    padding: 1vh 1vw;
-    margin: 1vh 1vw;
-  }
+  display: flex;
+  height: 95vh;
+  margin: 1vh 2vw;
+  padding: 10px;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.left-side {
+  flex-direction: column;
+  justify-content: space-around;
+  width: 55vw;
+}
+
+.cadastro {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  font-size: small;
+}
+
+#text-start {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+}
+
+#text-start p {
+  font-size: small;
+}
+
+.join-with-web {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+}
+
+.join-with-web button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 8vh;
+  gap: 1vw;
+  background-color: transparent;
+  padding: 1vw;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.div-for-login {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+}
+
+.login-place {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.login-place input {
+  height: 8vh;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.login-place input::placeholder {
+  padding: 0px 1vw;
+}
+
+.password-place {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.password-place input {
+  width: 100%;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+}
+
+.miss-password {
+  display: flex;
+  justify-content: end;
+  font-size: small;
+  margin-top: 1vh;
+}
+
+.join-btn {
+  background-color: rgba(72,60,239,1);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  height: 8vh;
+}
+
+.right-side {
+  background-color:  rgba(72,60,239,1);
+  border: none;
+  border-radius: 10px;
+  padding: 1vh 1vw;
+  margin: 1vh 1vw;
+  width: 45vw;
+}
