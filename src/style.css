@@ -28,6 +28,11 @@
   width: 100%;
 }
 
+#text-start h2 {
+  width: 100%
+  border: 2px solid red;
+}
+
 #text-start p {
   font-size: small;
 }
