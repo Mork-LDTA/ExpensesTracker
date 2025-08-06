@@ -24,13 +24,10 @@ public class Cpfutils {
         soma2 += dv1 * 2;
         int dv2 = soma2 % 11 < 2 ? 0 : 11 - (soma2 % 11);
 
-        // Verificação final
+       
         return cpf.endsWith("" + dv1 + dv2);
     }
 
-    // Exemplo de uso
-    public static void main(String[] args) {
-        String cpfTeste = "123.456.789-09";
-        System.out.println("CPF válido? " + validarCPF(cpfTeste));
-    }
+    
+    
 }

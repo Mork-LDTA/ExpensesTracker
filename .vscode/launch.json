@@ -5,6 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "test",
+            "request": "launch",
+            "mainClass": "test.utils.test",
+            "projectName": "Project_6fa4d661"
+        },
+        {
+            "type": "java",
+            "name": "Cpfutils",
+            "request": "launch",
+            "mainClass": "test.utils.Cpfutils",
+            "projectName": "Project_6fa4d661"
+        },
+        {
             "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
