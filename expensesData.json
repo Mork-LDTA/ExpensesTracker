@@ -1,0 +1,64 @@
+{
+    "expenses": [
+        {
+            "id": 3,
+            "description": "TERCEIRO",
+            "value": 333333,
+            "createdAt": "2025-08-06T19:23:06.101178"
+        },
+        {
+            "id": 4,
+            "description": "Segundo",
+            "value": 22222,
+            "createdAt": "2025-08-06T19:23:07.067506"
+        },
+        {
+            "id": 5,
+            "description": "test",
+            "value": 22222,
+            "createdAt": "2025-08-06T19:23:09.466448"
+        },
+        {
+            "id": 6,
+            "description": "Segundo",
+            "value": 22222,
+            "createdAt": "2025-08-06T19:23:09.927013"
+        },
+        {
+            "id": 7,
+            "description": "Segundo",
+            "value": 7,
+            "createdAt": "2025-08-06T19:23:10.471460"
+        },
+        {
+            "id": 8,
+            "description": "Segundo",
+            "value": 22222,
+            "createdAt": "2025-08-06T19:23:10.670319"
+        },
+        {
+            "id": 9,
+            "description": "Segundo",
+            "value": 22222,
+            "createdAt": "2025-08-06T19:23:10.859717"
+        },
+        {
+            "id": 10,
+            "description": "Segundo",
+            "value": 22222,
+            "createdAt": "2025-08-06T19:49:03.180929"
+        },
+        {
+            "id": 11,
+            "description": "Segundo",
+            "value": 22222,
+            "createdAt": "2025-08-06T19:50:19.338282"
+        },
+        {
+            "id": 12,
+            "description": "Segundo",
+            "value": 22222,
+            "createdAt": "2025-08-06T19:55:04.914327"
+        }
+    ]
+}
