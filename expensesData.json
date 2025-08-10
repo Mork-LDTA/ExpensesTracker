@@ -2,32 +2,44 @@
     "expenses": [
         {
             "id": 0,
-            "description": "samuel",
-            "value": 123,
+            "description": "Salada",
+            "value": 1230,
             "createdAt": "2025-08-10T13:53:23.609230"
         },
         {
             "id": 3,
-            "description": "Descricao",
-            "value": 300,
+            "description": "Hamburger",
+            "value": 3000,
             "createdAt": "2025-08-10T13:56:28.010389"
         },
         {
             "id": 4,
-            "description": "",
-            "value": 1000,
+            "description": "Pinga",
+            "value": 500,
             "createdAt": "2025-08-10T13:57:21.647331"
         },
         {
             "id": 5,
-            "description": "eu",
-            "value": 1234,
+            "description": "Pizza",
+            "value": 3500,
             "createdAt": "2025-08-10T13:57:55.746271"
         },
         {
             "id": 7,
             "description": "cerveja",
-            "value": 3000,
+            "value": 3800,
+            "createdAt": "2025-08-10T19:15:58.283092"
+        },
+        {
+            "id": 8,
+            "description": "Salgado",
+            "value": 500,
+            "createdAt": "2025-08-10T19:15:58.283092"
+        },
+        {
+            "id": 9,
+            "description": "Pao",
+            "value": 1000,
             "createdAt": "2025-08-10T19:15:58.283092"
         }
     ]

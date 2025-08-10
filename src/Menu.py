@@ -1,16 +1,7 @@
-#O aplicativo deve ser executado a partir da linha de comando e deve ter os seguintes recursos:
 
-#Os usuários podem adicionar uma despesa com uma descrição e valor. /\/\\/\/\/\//\/\/\/\/
-#Os usuários podem atualizar uma despesa./\/\\/\/\/\//\/\/\/\/
-#Os usuários podem excluir uma despesa. /\/\\/\/\/\//\/\/\/\/
-#Os usuários podem visualizar todas as despesas. /\/\\/\/\/\//\/\/\/\/
-#Os usuários podem visualizar um resumo de todas as despesas.\/\/\/\/\ Printar estilo excel
-#Os usuarios podem visualizar apenas a despesa que ele deseja por id.\/\/\/\//\/\
 #Os usuários podem visualizar um resumo das despesas para um mês específico (do ano atual).
 from datetime import datetime
-from os import system
 import Headers
-system("clear")
 import fileService
 import expensesService
 import color
@@ -21,19 +12,7 @@ import color
 expensesService = expensesService.ExpensesService
 fileService = fileService.FileService
 
-
-
-#expense = expensesService.removeExpense(expenses=expense, id=0)
-#expense = expensesService.editExpense(expenses=expense, id=7, description=None, value=7 )
-
 teste = fileService.read_formmated()
-
-
-#A FAZER:
-
-# Menu para adicionar uma despesa 1
-# Menu para editar uma despesa 2
-# Menu para remover uma despesa 3
 
 def menu():
     expense = fileService.read()
@@ -74,7 +53,7 @@ def menu():
                 if confirmDelete not in [1, 2]:
                     print("Por favor, digite 1 ou 2.")
                 elif confirmDelete == 2:
-                    system("clear")
+                    
                     menu()
                 elif confirmDelete == 1:
                     expensesService.getExpenseIndexById(expenses=expense, id=idExpense)
