@@ -7,18 +7,6 @@
             "createdAt": "2025-08-10T13:53:23.609230"
         },
         {
-            "id": 1,
-            "description": "sorvete",
-            "value": 2134,
-            "createdAt": "2025-08-10T13:53:32.065268"
-        },
-        {
-            "id": 2,
-            "description": "joao",
-            "value": 1234,
-            "createdAt": "2025-08-10T13:54:54.230428"
-        },
-        {
             "id": 3,
             "description": "Descricao",
             "value": 300,
@@ -34,6 +22,12 @@
             "id": 5,
             "description": "eu",
             "value": 1234,
+            "createdAt": "2025-08-10T13:57:55.746271"
+        },
+        {
+            "id": 6,
+            "description": "ultimo",
+            "value": 333334,
             "createdAt": "2025-08-10T13:57:55.746271"
         }
     ]

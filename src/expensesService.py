@@ -1,5 +1,10 @@
 from datetime import datetime
+import color
+
+
 class ExpensesService:
+
+    @staticmethod
     def addExpense(expenses=dict, description=str, value=int):
         tot = 0
         if expenses:
@@ -25,16 +30,18 @@ class ExpensesService:
                 ]
             }
             return expenses
-        
+     
+    @staticmethod   
     def removeExpense(expenses=dict, id=int):
-        index = ExpensesService.findExpenseIndexById(expenses=expenses, id=id)
+        index = ExpensesService.getExpenseIndexById(expenses=expenses, id=id)
         if type(index) == int:
             expenses["expenses"].pop(index)
         return expenses
     
+    @staticmethod
     def editExpense(expenses=dict, id=int, description=None, value=None):
         # 1 Encontrar
-        index = ExpensesService.findExpenseIndexById(expenses=expenses, id=id)
+        index = ExpensesService.getExpenseIndexById(expenses=expenses, id=id)
         if type(index) == int:
         # 2 Editar
             expense = expenses["expenses"][index]
@@ -51,17 +58,40 @@ class ExpensesService:
         # 3 Retornar
         return expenses
     
-    def findExpenseIndexById(expenses=dict, id=int):
+    @staticmethod
+    def getExpenseIndexById(expenses=dict, id=id):
         try:
             listIds = []
             for item in expenses["expenses"]:
                 listIds.append(item['id'])
             return listIds.index(id)
-        except:
-            print("Item nao encontrado!") 
+        except ValueError:
+            print(f"Item com ID {id} não encontrado!")
+            return None
 
     @staticmethod
+    def printExpenseById(expenses, id):
+
+        index = ExpensesService.getExpenseIndexById(expenses=expenses, id=id)
+
+        if isinstance(index, int):
+            expense = expenses["expenses"][index]
+            date_formatted = datetime.fromisoformat(expense["createdAt"]).strftime("%d/%m/%Y %H:%M")
+            print("==" * 20)
+            print(f"ID: {expense['id']}")
+            print(f"Descrição: {expense['description']}")
+            print(f"Valor: R$ {expense['value'] / 100:.2f}")
+            print(f"Criado em: {date_formatted}")
+            print("==" * 20, "\n\n")
+        else:
+            print(f"Despesa com ID {id} não encontrada.")
+
+            
+    @staticmethod
     def viewSummary(expenses=dict):
+        print("=="*20)
+        print("Resumo Despesas".center(40))
+        print("=="*20)
         if not expenses or "expenses" not in expenses or not expenses["expenses"]:
             print("\nNenhuma Despesa encontrada.")
             return
@@ -70,13 +100,14 @@ class ExpensesService:
         
         for expense in expenses["expenses"]:
             date_formatted = datetime.fromisoformat(expense["createdAt"]).strftime("%d/%m/%Y %H:%M")
+            print("\n")
             print(f"ID: {expense['id']}")
             print(f"Descrição: {expense['description']}")
             print(f"Valor: R$ {expense['value'] / 100:.2f}")
             print(f"Criado em: {date_formatted}")
-            print("=" * 20)
+            print("==" * 20)
             total += expense["value"]
 
-        print(f"Total de despesas: R$ {total / 100:.2f}")
+        print(color.red + f"Total de despesas: R$ {total / 100:.2f}" + )
         
         

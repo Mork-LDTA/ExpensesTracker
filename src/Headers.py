@@ -1,19 +1,19 @@
 import color
 
+@staticmethod
 def header():
     print("=="*20)
     print("Controle de despesas".center(40))
     print("=="*20)
 
-
+@staticmethod
 def menu():
     print(color.white + "=="*20 + color.reset_color)
-    print("Menu de Despesas".center(40), "\n")
-    print("1. Adicionar despesa\n")
-    print(color.red + "2. Editar despesa\n"+color.reset_color)
-    print("3. Remover despesa\n")
-    print("4. Sumario de despesas")
-    print("=="*20)
+    print(color.white +"Menu de Despesas".center(40) + color.reset_color)
+    print(color.white +"=="*20)
+    print(color.yellow + "1. Adicionar despesa\n")
+    print(color.yellow + "2. Editar despesa\n")
+    print(color.yellow + "3. Remover despesa\n")
+    print(color.yellow + "4. Sumario de despesas")
+    print(color.white + "=="*20 + color.reset_color)
 
-def resume():
-    print("=="*20, "\nResumo Despesas\n".center(40),"\n", "=="*20, "\n")

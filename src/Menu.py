@@ -1,4 +1,5 @@
 #O aplicativo deve ser executado a partir da linha de comando e deve ter os seguintes recursos:
+
 #Os usuários podem adicionar uma despesa com uma descrição e valor. /\/\\/\/\/\//\/\/\/\/
 #Os usuários podem atualizar uma despesa./\/\\/\/\/\//\/\/\/\/
 #Os usuários podem excluir uma despesa. /\/\\/\/\/\//\/\/\/\/
@@ -12,6 +13,7 @@ import Headers
 system("clear")
 import fileService
 import expensesService
+import color
 
 
 
@@ -19,7 +21,7 @@ import expensesService
 expensesService = expensesService.ExpensesService
 fileService = fileService.FileService
 
-expense = fileService.read()
+
 
 #expense = expensesService.removeExpense(expenses=expense, id=0)
 #expense = expensesService.editExpense(expenses=expense, id=7, description=None, value=7 )
@@ -33,42 +35,59 @@ teste = fileService.read_formmated()
 # Menu para editar uma despesa 2
 # Menu para remover uma despesa 3
 
-Headers.menu()
-selection = int(input("NUM : "))
-if selection == 1:
-    print("=="*20 + "\n")
-    description = input("Digite a descrição da despesa: ")
-    value = int(input("Digite o valor da despesa: "))
-    expense = expensesService.addExpense(expenses=expense ,description=description, value=value)
-    fileService.write(expense) 
-
-elif selection == 2:
-    print("=="*20 + "\n")
-    idExpense = int(input("Digite o ID da despesa: "))
-    expense = expensesService.editExpense(expenses=expense, id=idExpense)
+def menu():
+    expense = fileService.read()
+    Headers.menu()
+    selection = int(input("NUM : "))
     print()
+    if selection == 1:
+        print("=="*20 + "\n")
+        description = input("Digite a descrição da despesa: ")
+        value = int(input("\nDigite o valor da despesa: "))
+        expense = expensesService.addExpense(expenses=expense ,description=description, value=value)
+        fileService.write(expense) 
 
-elif selection == 3:
-    print("=="*20 + "\n")
-    idExpense = int(input("Digite o Id da despesa: " + "\n"))
-    #print(showExpense + "\n")
-    print("Tem certeza que deseja remover?")
-    print("1. Sim")
-    print("2. Não" + "\n")
-    confirmDelete = None
-    while confirmDelete not in [1, 2]:
-        try:
-            selection = input("Confirme a exclusao? (1. Sim\n2. Não): ").strip()
-            confirmDelete = int(selection)
-            
-            if confirmDelete not in [1, 2]:
-                print("Por favor, digite 1 ou 2.")
-        except ValueError:
-        
+    elif selection == 2:
+        print("=="*20 + "\n")
+        idExpense = int(input("Digite o ID da despesa: "))
+        print("\n[Pressione enter se caso nao queira mudar o valor]")
+        description = input("Digite a nova descrição da despesa: ")
+        value = int(input("\nDigite o novo valor da despesa: "))
+        expense = expensesService.editExpense(expenses=expense, id=idExpense,description=description,value=value)
+        fileService.write(expense)
 
-elif selection == 4:
-    expensesService.viewSummary(expenses=expense)
+    elif selection == 3:
+        print("=="*20 + "\n")
+        idExpense = int(input("Digite o Id da despesa: "))
+        expensesService.getExpenseIndexById(expenses=expense, id=idExpense)
 
-else:
-    print("Valor invalido, por favor digite um número valido")
+        confirmDelete = None
+        while confirmDelete not in [1, 2]:
+            try:
+                expensesService.printExpenseById(expenses=expense, id=idExpense)
+                selection = input("\nConfirme a exclusao?\n\n 1. Sim\n 2. Não\n\nResposta: ").strip()
+                confirmDelete = int(selection)
+                
+                if confirmDelete not in [1, 2]:
+                    print("Por favor, digite 1 ou 2.")
+                elif confirmDelete == 2:
+                    system("clear")
+                    menu()
+                elif confirmDelete == 1:
+                    expensesService.getExpenseIndexById(expenses=expense, id=idExpense)
+                    #expensesService.printExpenseById()
+                    expensesService.removeExpense(expenses=expense, id=idExpense)
+                    fileService.write(expense)
 
+            except ValueError:
+                print(color.red + "\nEntrada invalida. Digite um numero: 1 ou 2"+color.reset_color)
+
+    elif selection == 4:
+        expensesService.viewSummary(expenses=expense)
+        print("\n\n")
+        menu()
+
+    else:
+        print("Valor invalido, por favor digite um número valido")
+
+menu()
