@@ -1,2 +1,2 @@
 import Headers
-Headers
+Headers.header()

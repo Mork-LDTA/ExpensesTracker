@@ -1,64 +1,40 @@
 {
     "expenses": [
         {
+            "id": 0,
+            "description": "samuel",
+            "value": 123,
+            "createdAt": "2025-08-10T13:53:23.609230"
+        },
+        {
+            "id": 1,
+            "description": "sorvete",
+            "value": 2134,
+            "createdAt": "2025-08-10T13:53:32.065268"
+        },
+        {
+            "id": 2,
+            "description": "joao",
+            "value": 1234,
+            "createdAt": "2025-08-10T13:54:54.230428"
+        },
+        {
             "id": 3,
-            "description": "TERCEIRO",
-            "value": 333333,
-            "createdAt": "2025-08-06T19:23:06.101178"
+            "description": "Descricao",
+            "value": 300,
+            "createdAt": "2025-08-10T13:56:28.010389"
         },
         {
             "id": 4,
-            "description": "Segundo",
-            "value": 22222,
-            "createdAt": "2025-08-06T19:23:07.067506"
+            "description": "sorvete",
+            "value": 1000000,
+            "createdAt": "2025-08-10T13:57:21.647331"
         },
         {
             "id": 5,
-            "description": "test",
-            "value": 22222,
-            "createdAt": "2025-08-06T19:23:09.466448"
-        },
-        {
-            "id": 6,
-            "description": "Segundo",
-            "value": 22222,
-            "createdAt": "2025-08-06T19:23:09.927013"
-        },
-        {
-            "id": 7,
-            "description": "Segundo",
-            "value": 7,
-            "createdAt": "2025-08-06T19:23:10.471460"
-        },
-        {
-            "id": 8,
-            "description": "Segundo",
-            "value": 22222,
-            "createdAt": "2025-08-06T19:23:10.670319"
-        },
-        {
-            "id": 9,
-            "description": "Segundo",
-            "value": 22222,
-            "createdAt": "2025-08-06T19:23:10.859717"
-        },
-        {
-            "id": 10,
-            "description": "Segundo",
-            "value": 22222,
-            "createdAt": "2025-08-06T19:49:03.180929"
-        },
-        {
-            "id": 11,
-            "description": "Segundo",
-            "value": 22222,
-            "createdAt": "2025-08-06T19:50:19.338282"
-        },
-        {
-            "id": 12,
-            "description": "Segundo",
-            "value": 22222,
-            "createdAt": "2025-08-06T19:55:04.914327"
+            "description": "eu",
+            "value": 1234,
+            "createdAt": "2025-08-10T13:57:55.746271"
         }
     ]
 }

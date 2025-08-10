@@ -17,7 +17,7 @@ class ExpensesService:
             expenses = {
                 "expenses": [
                     {   
-                        "id" : 0,
+                        "id" : tot,
                         "description": description,
                         "value": value,
                         "createdAt": datetime.now().isoformat()
@@ -59,3 +59,24 @@ class ExpensesService:
             return listIds.index(id)
         except:
             print("Item nao encontrado!") 
+
+    @staticmethod
+    def viewSummary(expenses=dict):
+        if not expenses or "expenses" not in expenses or not expenses["expenses"]:
+            print("\nNenhuma Despesa encontrada.")
+            return
+        
+        total = 0
+        
+        for expense in expenses["expenses"]:
+            date_formatted = datetime.fromisoformat(expense["createdAt"]).strftime("%d/%m/%Y %H:%M")
+            print(f"ID: {expense['id']}")
+            print(f"Descrição: {expense['description']}")
+            print(f"Valor: R$ {expense['value'] / 100:.2f}")
+            print(f"Criado em: {date_formatted}")
+            print("=" * 20)
+            total += expense["value"]
+
+        print(f"Total de despesas: R$ {total / 100:.2f}")
+        
+        
