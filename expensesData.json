@@ -14,8 +14,8 @@
         },
         {
             "id": 4,
-            "description": "sorvete",
-            "value": 1000000,
+            "description": "",
+            "value": 1000,
             "createdAt": "2025-08-10T13:57:21.647331"
         },
         {
@@ -25,10 +25,10 @@
             "createdAt": "2025-08-10T13:57:55.746271"
         },
         {
-            "id": 6,
-            "description": "ultimo",
-            "value": 333334,
-            "createdAt": "2025-08-10T13:57:55.746271"
+            "id": 7,
+            "description": "cerveja",
+            "value": 3000,
+            "createdAt": "2025-08-10T19:15:58.283092"
         }
     ]
 }

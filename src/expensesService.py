@@ -53,7 +53,7 @@ class ExpensesService:
                "id": expense["id"],
                "description": description,
                "value": value,
-               "createdAt": expense["createdAt"] 
+               "createdAt": expense["createdAt"]  # type: ignore
             }
         # 3 Retornar
         return expenses
@@ -108,6 +108,6 @@ class ExpensesService:
             print("==" * 20)
             total += expense["value"]
 
-        print(color.red + f"Total de despesas: R$ {total / 100:.2f}" + )
+        print(color.red + f"Total de despesas: R$ {total / 100:.2f}" + color.reset_color)
         
         

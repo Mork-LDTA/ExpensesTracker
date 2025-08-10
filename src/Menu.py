@@ -5,7 +5,7 @@
 #Os usuários podem excluir uma despesa. /\/\\/\/\/\//\/\/\/\/
 #Os usuários podem visualizar todas as despesas. /\/\\/\/\/\//\/\/\/\/
 #Os usuários podem visualizar um resumo de todas as despesas.\/\/\/\/\ Printar estilo excel
-#Os usuarios podem visualizar apenas a despesa que ele deseja por id.
+#Os usuarios podem visualizar apenas a despesa que ele deseja por id.\/\/\/\//\/\
 #Os usuários podem visualizar um resumo das despesas para um mês específico (do ano atual).
 from datetime import datetime
 from os import system
@@ -38,7 +38,7 @@ teste = fileService.read_formmated()
 def menu():
     expense = fileService.read()
     Headers.menu()
-    selection = int(input("NUM : "))
+    selection = int(input("\nNUM : "))
     print()
     if selection == 1:
         print("=="*20 + "\n")
@@ -46,19 +46,22 @@ def menu():
         value = int(input("\nDigite o valor da despesa: "))
         expense = expensesService.addExpense(expenses=expense ,description=description, value=value)
         fileService.write(expense) 
+        menu()
 
     elif selection == 2:
         print("=="*20 + "\n")
         idExpense = int(input("Digite o ID da despesa: "))
-        print("\n[Pressione enter se caso nao queira mudar o valor]")
+        print("\n[Pressione enter se caso nao queira mudar o valor ou descricao]")
         description = input("Digite a nova descrição da despesa: ")
         value = int(input("\nDigite o novo valor da despesa: "))
         expense = expensesService.editExpense(expenses=expense, id=idExpense,description=description,value=value)
         fileService.write(expense)
+        menu()
 
     elif selection == 3:
         print("=="*20 + "\n")
-        idExpense = int(input("Digite o Id da despesa: "))
+        idExpense = int(input(color.white + "Digite o Id da despesa: " + color.reset_color))
+        print()
         expensesService.getExpenseIndexById(expenses=expense, id=idExpense)
 
         confirmDelete = None
@@ -75,9 +78,9 @@ def menu():
                     menu()
                 elif confirmDelete == 1:
                     expensesService.getExpenseIndexById(expenses=expense, id=idExpense)
-                    #expensesService.printExpenseById()
                     expensesService.removeExpense(expenses=expense, id=idExpense)
                     fileService.write(expense)
+                    menu()
 
             except ValueError:
                 print(color.red + "\nEntrada invalida. Digite um numero: 1 ou 2"+color.reset_color)
