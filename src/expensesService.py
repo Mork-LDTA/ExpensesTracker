@@ -1,11 +1,17 @@
 from datetime import datetime
 import color
+import pandas as pd
+import fileService
+
+
 
 
 class ExpensesService:
 
+    fileService = fileService.FileService
+
     @staticmethod
-    def addExpense(expenses=dict, description=str, value=int):
+    def add_expense(expenses=dict, description=str, value=int):
         tot = 0
         if expenses:
             for item in expenses["expenses"]:
@@ -32,16 +38,16 @@ class ExpensesService:
             return expenses
      
     @staticmethod   
-    def removeExpense(expenses=dict, id=int):
-        index = ExpensesService.getExpenseIndexById(expenses=expenses, id=id)
+    def remove_expense(expenses=dict, id=int):
+        index = ExpensesService.get_expense_index_by_id(expenses=expenses, id=id)
         if type(index) == int:
             expenses["expenses"].pop(index)
         return expenses
     
     @staticmethod
-    def editExpense(expenses=dict, id=int, description=None, value=None):
+    def edit_expense(expenses=dict, id=int, description=None, value=None):
         # 1 Encontrar
-        index = ExpensesService.getExpenseIndexById(expenses=expenses, id=id)
+        index = ExpensesService.get_expense_index_by_id(expenses=expenses, id=id)
         if type(index) == int:
         # 2 Editar
             expense = expenses["expenses"][index]
@@ -59,7 +65,7 @@ class ExpensesService:
         return expenses
     
     @staticmethod
-    def getExpenseIndexById(expenses=dict, id=id):
+    def get_expense_index_by_id(expenses=dict, id=id):
         try:
             listIds = []
             for item in expenses["expenses"]:
@@ -70,9 +76,9 @@ class ExpensesService:
             return None
 
     @staticmethod
-    def printExpenseById(expenses, id):
+    def print_expense_by_id(expenses, id):
 
-        index = ExpensesService.getExpenseIndexById(expenses=expenses, id=id)
+        index = ExpensesService.get_expense_index_by_id(expenses=expenses, id=id)
 
         if isinstance(index, int):
             expense = expenses["expenses"][index]
@@ -88,11 +94,10 @@ class ExpensesService:
 
             
     @staticmethod
-    def viewSummary(expenses=dict):
+    def view_summary(expenses=dict):
         if not expenses or "expenses" not in expenses or not expenses["expenses"]:
             print("\nNenhuma despesa encontrada.")
             return
-
         print(f"{'#':<3} {'ID':<5} {'Date':<12} {'Description':<20} {'Amount':>10}")
         print("-" * 55)
 
@@ -106,5 +111,26 @@ class ExpensesService:
         print("-" * 55)
         print(f"{'':<3} {'':<5} {'':<12} {'TOTAL':<20} R${total / 100:.2f}")
 
+    
+        
 
-            
+    @staticmethod
+    def export_json_to_csv(json_path, csv_path):
+        try:
+            expense = fileService.FileService.read()
+            # Verifica se o json nao esta vazio ou se a chave existe
+            if "expenses" not in expense or not expense["expenses"]:
+                print("Nenhuma despesa encontrada para exportar.")
+                return
+
+            #converte para dataframe(coluna e linhas)
+            df = pd.DataFrame(expense["expenses"])
+
+            #exportar para CSV 
+            df.to_csv(csv_path, index=False)
+            print(f"Arquivo exportado para {csv_path}")
+
+        except Exception as e:
+            print(f"Erro ao exportar para CSV: {e}")
+
+        

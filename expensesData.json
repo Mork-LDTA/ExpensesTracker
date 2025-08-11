@@ -41,6 +41,30 @@
             "description": "Pao",
             "value": 1000,
             "createdAt": "2025-08-10T19:15:58.283092"
+        },
+        {
+            "id": 10,
+            "description": "descrica",
+            "value": 2000,
+            "createdAt": "2025-08-11T16:43:58.173328"
+        },
+        {
+            "id": 11,
+            "description": "COPO",
+            "value": 99999,
+            "createdAt": "2025-08-11T16:48:44.647141"
+        },
+        {
+            "id": 12,
+            "description": "samuel",
+            "value": 10000,
+            "createdAt": "2025-08-11T16:54:07.052560"
+        },
+        {
+            "id": 13,
+            "description": "carro",
+            "value": 9999999,
+            "createdAt": "2025-08-11T16:54:20.665545"
         }
     ]
 }
