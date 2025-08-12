@@ -2,16 +2,33 @@ from datetime import datetime
 import color
 import pandas as pd
 import fileService
-
+import Headers
 
 
 
 class ExpensesService:
+    @staticmethod
+    def category_user_expenses():
+        category_list = ("Fastfood", "Alimentacao", "Lazer", "Contas", "Roupas", "Saude", "Outos")
+        while True:
+            try:
+                Headers.category_expense()
+                category_user_choice = int(input("Categoria: ")) - 1
+                if 0 <= category_user_choice < len(category_list):
+                    choice = category_list[category_user_choice]
+                    print(f"Você escolheu: {choice}")
+                    return choice
+                else:
+                    print(color.red+"\nOpção não encontrada. Por favor, digite um número válido."+color.reset_color)
+            except ValueError:
+                print(color.red+"\nEntrada inválida. Digite apenas números inteiros."+color.reset_color)
 
-    fileService = fileService.FileService
+    file_service = fileService.FileService
+    
 
     @staticmethod
-    def add_expense(expenses=dict, description=str, value=int):
+    def add_expense(expenses=dict, description=str, value=int, category=str):
+
         tot = 0
         if expenses:
             for item in expenses["expenses"]:
@@ -21,6 +38,7 @@ class ExpensesService:
                         "id": tot,
                         "description": description,
                         "value": value,
+                        "category": category,
                         "createdAt": datetime.now().isoformat()
             })
             return expenses
@@ -31,6 +49,7 @@ class ExpensesService:
                         "id" : tot,
                         "description": description,
                         "value": value,
+                        "category": category,
                         "createdAt": datetime.now().isoformat()
                     }
                 ]
@@ -45,7 +64,7 @@ class ExpensesService:
         return expenses
     
     @staticmethod
-    def edit_expense(expenses=dict, id=int, description=None, value=None):
+    def edit_expense(expenses=dict, id=int, description=None, value=None, category=None):
         # 1 Encontrar
         index = ExpensesService.get_expense_index_by_id(expenses=expenses, id=id)
         if type(index) == int:
@@ -54,11 +73,14 @@ class ExpensesService:
             if(description is None):
                 description = expense["description"] 
             if(value is None):
-                value = expense["value"] 
+                value = expense["value"]
+            if(category is None):
+                category = expense["category"]
             expenses["expenses"][index] = {
                "id": expense["id"],
                "description": description,
                "value": value,
+               "category": category,
                "createdAt": expense["createdAt"]  # type: ignore
             }
         # 3 Retornar
@@ -72,7 +94,7 @@ class ExpensesService:
                 listIds.append(item['id'])
             return listIds.index(id)
         except ValueError:
-            print(f"Item com ID {id} não encontrado!")
+            print(color.red + f"Item com ID {id} não encontrado!\n"+color.reset_color)
             return None
 
     @staticmethod
@@ -133,4 +155,6 @@ class ExpensesService:
         except Exception as e:
             print(f"Erro ao exportar para CSV: {e}")
 
-        
+
+
+            

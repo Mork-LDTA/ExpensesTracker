@@ -1,4 +1,3 @@
-#programa esta achando id que nao existe!
 #Os usuários podem visualizar um resumo das despesas para um mês específico (do ano atual).
 import time
 import Headers
@@ -11,8 +10,8 @@ import os
 
 
 expensesService = expensesService.ExpensesService
-fileService = fileService.FileService
-teste = fileService.read_formmated()
+file_service = fileService.FileService
+teste = file_service.read_formmated()
 
 
 def clear_terminal():
@@ -27,21 +26,11 @@ def confirm_menu_return():
     print("2.Continuar\n")
     return_choice = int(input("Opção: "))
     if return_choice == 1:
-        clear_terminal()
         menu()
 
-def category_user_expenses():
-    print(
-                        "\n     1.Fastfood\n \
-    2.Alimentacao\n \
-    3.Lazer\n \
-    4.Contas\n \
-    5.Roupas\n \
-    6.Saude\n \
-    7.Outros\n")
 
 def menu():
-    expense = fileService.read()
+    expense = file_service.read()
     Headers.menu()
     selection = int(input("\nNUM : "))
     print()
@@ -57,27 +46,29 @@ def menu():
                 value = None
             else:
                 value = int(value_str)
-
-            expense = expensesService.add_expense(expenses=expense ,description=description, value=value)
-            fileService.write(expense) 
+            choice = expensesService.category_user_expenses()
+            expense = expensesService.add_expense(expenses=expense ,description=description, value=value, category=choice)
+            file_service.write(expense) 
             print("=="*20)
             print()
             confirm_menu_return()
             
         elif selection == 2:
-            print("=="*20 + "\n")
+            print(color.white +"=="*20 + "\n")
             idExpense = int(input("Digite o ID da despesa: "))
-            print("\n[Pressione enter se caso nao queira mudar o valor ou descricao]\n")
-            description = input("Digite a nova descrição da despesa: ")
-            value_str = input("\nDigite o valor da despesa: ") 
-            if value_str.strip() == "":
-                value = None
-            else:
-                value = int(value_str)
-
-            expense = expensesService.edit_expense(expenses=expense, id=idExpense,description=description,value=value)
-            fileService.write(expense)
-            print("=="*20)
+            index = expensesService.get_expense_index_by_id(expense, idExpense)
+            if type(index) == int:
+                print("\n[Pressione enter se caso queira deixar antigo]\n")
+                description = input("Digite a nova descrição da despesa: ")
+                value_str = input("\nDigite o valor da despesa: ")
+                choice = expensesService.category_user_expenses()
+                if value_str.strip() == "":
+                    value = None
+                else:
+                    value = int(value_str)
+                expense = expensesService.edit_expense(expenses=expense, id=idExpense,description=description,value=value, category=choice)
+                file_service.write(expense)
+                print("=="*20+color.reset_color)
             print()
             confirm_menu_return()
 
@@ -101,7 +92,7 @@ def menu():
                     elif confirmDelete == 1:
                         expensesService.getExpenseIndexById(expenses=expense, id=idExpense)
                         expensesService.removeExpense(expenses=expense, id=idExpense)
-                        fileService.write(expense)
+                        file_service.write(expense)
                         confirm_menu_return()
 
                 except ValueError:
@@ -123,14 +114,7 @@ def menu():
                     expensesService.view_summary(expense)
                     confirm_menu_return()
                 if selection == 3:
-                    print(
-                        "\n     1.Fastfood\n \
-    2.Alimentacao\n \
-    3.Lazer\n \
-    4.Contas\n \
-    5.Roupas\n \
-    6.Saude\n \
-    7.Outros\n")
+                    print()
                 if selection == 4:
                     confirm_menu_return()
 
@@ -142,7 +126,7 @@ def menu():
                                         "Opcao: "))
             if user_aswer == 1:
                 expensesService.export_json_to_csv("expensesData.json", "expensesData.csv")
-
+                confirm_menu_return()
             elif user_aswer == 2:
                 confirm_menu_return()
 
@@ -155,4 +139,5 @@ def menu():
             time.sleep(2)
             print("Fim do Programa.")
             exit()
+
 menu()

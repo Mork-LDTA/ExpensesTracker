@@ -24,3 +24,16 @@ def bars(string_text):
     print(color.white+"=="*20)
     print(color.green+string_text.center(40))
     print(color.white+"=="*20)
+
+def category_expense():
+    print(color.white+"=="*20)
+    print(
+color.yellow+"\n     1.Fastfood\n \
+    2.Alimentacao\n \
+    3.Lazer\n \
+    4.Contas\n \
+    5.Roupas\n \
+    6.Saude\n \
+    7.Outros\n")
+    print(color.white+"=="*20+color.reset_color)
+    
