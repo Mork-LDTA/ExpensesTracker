@@ -120,17 +120,17 @@ class ExpensesService:
         if not expenses or "expenses" not in expenses or not expenses["expenses"]:
             print("\nNenhuma despesa encontrada.")
             return
-        print(f"{'#':<3} {'ID':<5} {'Date':<12} {'Description':<20} {'Amount':>10}")
-        print("-" * 55)
+        print(f"{'#':<3} {'ID':<5} {'Date':<12} {'Description':<20} {'category':<15} {'Amount':>10}")
+        print("-" * 70)
 
         total = 0
         for expense in expenses["expenses"]:
             date_formatted = datetime.fromisoformat(expense["createdAt"]).strftime("%Y-%m-%d")
             amount = f"R${expense['value'] / 100:.2f}"
-            print(f"{'':<3} {expense['id']:<5} {date_formatted:<12} {expense['description']:<20} {amount:>10}")
+            print(f"{'':<3} {expense['id']:<5} {date_formatted:<12} {expense['description']:<20} {expense['category']:<15} {amount:>10}")
             total += expense["value"]
 
-        print("-" * 55)
+        print("-" * 70)
         print(f"{'':<3} {'':<5} {'':<12} {'TOTAL':<20} R${total / 100:.2f}")
 
     
