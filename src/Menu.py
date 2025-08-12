@@ -1,11 +1,14 @@
 #programa esta achando id que nao existe!
 #Os usuários podem visualizar um resumo das despesas para um mês específico (do ano atual).
-from datetime import datetime
+import time
 import Headers
 import fileService
 import expensesService
 import color
 import os
+
+
+
 
 expensesService = expensesService.ExpensesService
 fileService = fileService.FileService
@@ -18,16 +21,24 @@ def clear_terminal():
     else: 
         os.system("clear")
 
-
 def confirm_menu_return():
     print("\nDeseja voltar ao Menu?\n")
     print("1.Voltar\n")
     print("2.Continuar\n")
-    return_choice = int(input("Opção: \n"))
+    return_choice = int(input("Opção: "))
     if return_choice == 1:
         clear_terminal()
         menu()
 
+def category_user_expenses():
+    print(
+                        "\n     1.Fastfood\n \
+    2.Alimentacao\n \
+    3.Lazer\n \
+    4.Contas\n \
+    5.Roupas\n \
+    6.Saude\n \
+    7.Outros\n")
 
 def menu():
     expense = fileService.read()
@@ -53,7 +64,6 @@ def menu():
             print()
             confirm_menu_return()
             
-
         elif selection == 2:
             print("=="*20 + "\n")
             idExpense = int(input("Digite o ID da despesa: "))
@@ -96,8 +106,7 @@ def menu():
 
                 except ValueError:
                     print(color.red + "\nEntrada invalida. Digite um numero: 1 ou 2"+color.reset_color)    
-
-                            
+                          
         elif selection == 4:
             while True:
                 Headers.bars("VER SUMARIO")
@@ -113,8 +122,15 @@ def menu():
                 if selection == 1:
                     expensesService.view_summary(expense)
                     confirm_menu_return()
-                if selection == 2:
-                    print()#jaozin
+                if selection == 3:
+                    print(
+                        "\n     1.Fastfood\n \
+    2.Alimentacao\n \
+    3.Lazer\n \
+    4.Contas\n \
+    5.Roupas\n \
+    6.Saude\n \
+    7.Outros\n")
                 if selection == 4:
                     confirm_menu_return()
 
@@ -124,11 +140,19 @@ def menu():
                                         "1- SIM\n" \
                                         "2- NAO\n" \
                                         "Opcao: "))
-
             if user_aswer == 1:
                 expensesService.export_json_to_csv("expensesData.json", "expensesData.csv")
-                
+
+            elif user_aswer == 2:
+                confirm_menu_return()
+
             else:
                 print("Valor invalido, por favor digite um número valido")
-            confirm_menu_return()
+                
+
+        elif selection == 0:
+            print("Encerrando...")
+            time.sleep(2)
+            print("Fim do Programa.")
+            exit()
 menu()

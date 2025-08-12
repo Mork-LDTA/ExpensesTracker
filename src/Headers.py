@@ -16,6 +16,7 @@ def menu():
     print(color.yellow + "3. Remover despesa\n")
     print(color.yellow + "4. Sumario de despesas\n")
     print(color.yellow + "5. Converter o arquivo em CSV\n")
+    print(color.yellow + "0. Sair/Fechar o programa\n")
     print(color.white + "=="*20 + color.reset_color)
 
 @staticmethod

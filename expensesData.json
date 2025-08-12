@@ -2,7 +2,7 @@
     "expenses": [
         {
             "id": 0,
-            "description": "Salada",
+            "description": "daksdksa",
             "value": 1230,
             "createdAt": "2025-08-10T13:53:23.609230"
         },
@@ -65,6 +65,24 @@
             "description": "carro",
             "value": 9999999,
             "createdAt": "2025-08-11T16:54:20.665545"
+        },
+        {
+            "id": 14,
+            "description": "feijao",
+            "value": 3000,
+            "createdAt": "2025-08-11T22:50:40.575964"
+        },
+        {
+            "id": 15,
+            "description": "Maconha",
+            "value": 1000,
+            "createdAt": "2025-08-11T23:14:27.773379"
+        },
+        {
+            "id": 16,
+            "description": "pedra",
+            "value": 10,
+            "createdAt": "2025-08-11T23:14:36.727817"
         }
     ]
 }
