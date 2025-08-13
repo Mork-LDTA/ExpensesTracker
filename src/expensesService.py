@@ -3,10 +3,14 @@ import color
 import pandas as pd
 import fileService
 import Headers
+import fileService
+
 
 
 
 class ExpensesService:
+    file_service = fileService.FileService
+    expense = file_service.read()
     @staticmethod
     def category_user_expenses():
         category_list = ("Fastfood", "Alimentacao", "Lazer", "Contas", "Roupas", "Saude", "Outos")
@@ -23,7 +27,7 @@ class ExpensesService:
             except ValueError:
                 print(color.red+"\nEntrada inválida. Digite apenas números inteiros."+color.reset_color)
 
-    file_service = fileService.FileService
+    
     
 
     @staticmethod
@@ -92,10 +96,12 @@ class ExpensesService:
             listIds = []
             for item in expenses["expenses"]:
                 listIds.append(item['id'])
+
             return listIds.index(id)
         except ValueError:
             print(color.red + f"Item com ID {id} não encontrado!\n"+color.reset_color)
             return None
+        
 
     @staticmethod
     def print_expense_by_id(expenses, id):
@@ -155,6 +161,36 @@ class ExpensesService:
         except Exception as e:
             print(f"Erro ao exportar para CSV: {e}")
 
+    #filtro por categoria        
+    @staticmethod
+    def get_expense_index_by_category():
+        ExpensesService.expense = fileService.FileService.read()
 
+        if not ExpensesService.expense or "expenses" not in ExpensesService.expense:
+            print("Nenhuma despesa carregada.")
+            return []
 
-            
+        chosen_category = ExpensesService.category_user_expenses()
+
+        expenses_data = ExpensesService.expense["expenses"]
+
+        filtered = [item for item in expenses_data if item["category"] == chosen_category]
+
+        if not filtered:
+            print(f"\nNenhuma despesa encontrada para a categoria '{chosen_category}'.")
+            return filtered
+
+        print(f"{'#':<3} {'ID':<5} {'Date':<12} {'Description':<20} {'Category':<15} {'Amount':>10}")
+        print("-" * 70)
+
+        total = 0
+        for expense in filtered:
+            date_formatted = datetime.fromisoformat(expense["createdAt"]).strftime("%Y-%m-%d")
+            amount = f"R${expense['value'] / 100:.2f}"
+            print(f"{'':<3} {expense['id']:<5} {date_formatted:<12} {expense['description']:<20} {expense['category']:<15} {amount:>10}")
+            total += expense["value"]
+
+        print("-" * 70)
+        print(f"{'':<3} {'':<5} {'':<12} {'TOTAL':<20} R${total / 100:.2f}")
+
+        return filtered

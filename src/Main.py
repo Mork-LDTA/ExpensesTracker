@@ -1,14 +1,15 @@
+import color
 import datetime
 import Headers
 import expensesService
 import fileService
 Headers.header()
 
-expensesService = expensesService.ExpensesService
-fileService = fileService.FileService
+
+expenses_service = expensesService.ExpensesService
+file_service = fileService.FileService
 teste = fileService.read_formmated()
 expense = fileService.read()
-expensesService.edit_expense(expenses=expense, id=11,description="yasuduasdas",value=None)
 fileService.write(expense)
 
 
@@ -33,4 +34,3 @@ def filter_by_user_choise(expenses=dict):
         print(f"Item com ID {id} não encontrado!")
         return None
     
-
