@@ -28,8 +28,6 @@ class ExpensesService:
                 print(color.red+"\nEntrada inválida. Digite apenas números inteiros."+color.reset_color)
 
     
-    
-
     @staticmethod
     def add_expense(expenses=dict, description=str, value=int, category=str):
 
@@ -62,6 +60,7 @@ class ExpensesService:
      
     @staticmethod   
     def remove_expense(expenses=dict, id=int):
+
         index = ExpensesService.get_expense_index_by_id(expenses=expenses, id=id)
         if type(index) == int:
             expenses["expenses"].pop(index)
@@ -69,6 +68,7 @@ class ExpensesService:
     
     @staticmethod
     def edit_expense(expenses=dict, id=int, description=None, value=None, category=None):
+
         # 1 Encontrar
         index = ExpensesService.get_expense_index_by_id(expenses=expenses, id=id)
         if type(index) == int:
@@ -120,7 +120,7 @@ class ExpensesService:
         else:
             print(f"Despesa com ID {id} não encontrada.")
 
-            
+        
     @staticmethod
     def view_summary(expenses=dict):
         if not expenses or "expenses" not in expenses or not expenses["expenses"]:
@@ -140,8 +140,6 @@ class ExpensesService:
         print(f"{'':<3} {'':<5} {'':<12} {'TOTAL':<20} R${total / 100:.2f}")
 
     
-        
-
     @staticmethod
     def export_json_to_csv(json_path, csv_path):
         try:
@@ -160,6 +158,20 @@ class ExpensesService:
 
         except Exception as e:
             print(f"Erro ao exportar para CSV: {e}")
+
+    @staticmethod
+    def get_month_by_user():
+        print()
+ 
+    #filtro por mes
+    @staticmethod
+    def get_expense_by_month():
+        ExpensesService.expense = fileService.FileService.read()
+
+        if not ExpensesService.expense or "expenses" not in ExpensesService.expense:
+            print("Nenhuma despesa carregada.")
+            return []
+    
 
     #filtro por categoria        
     @staticmethod

@@ -113,9 +113,9 @@ def menu():
                 if selection == 1:
                     expenses_service.view_summary(expense)
                     confirm_menu_return()
-                if selection == 3:
+                elif selection == 3:
                     expenses_service.get_expense_index_by_category()
-                if selection == 4:
+                elif selection == 4:
                     confirm_menu_return()
                     
         elif selection == 5:
