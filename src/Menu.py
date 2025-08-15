@@ -31,7 +31,7 @@ def confirm_menu_return():
 
 def menu():
     expense = file_service.read()
-    Headers.menu()
+    Headers.menu()  
     selection = int(input("\nNUM : "))
     print()
     while True:
@@ -113,6 +113,8 @@ def menu():
                 if selection == 1:
                     expenses_service.view_summary(expense)
                     confirm_menu_return()
+                    if selection == 2:
+                        print() # oq vc ta fazendo?
                 if selection == 3:
                     expenses_service.get_expense_index_by_category()
                 if selection == 4:

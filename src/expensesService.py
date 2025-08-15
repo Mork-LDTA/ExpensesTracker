@@ -28,8 +28,6 @@ class ExpensesService:
                 print(color.red+"\nEntrada inválida. Digite apenas números inteiros."+color.reset_color)
 
     
-    
-
     @staticmethod
     def add_expense(expenses=dict, description=str, value=int, category=str):
 
@@ -60,6 +58,7 @@ class ExpensesService:
             }
             return expenses
      
+
     @staticmethod   
     def remove_expense(expenses=dict, id=int):
         index = ExpensesService.get_expense_index_by_id(expenses=expenses, id=id)
@@ -67,6 +66,7 @@ class ExpensesService:
             expenses["expenses"].pop(index)
         return expenses
     
+
     @staticmethod
     def edit_expense(expenses=dict, id=int, description=None, value=None, category=None):
         # 1 Encontrar
@@ -90,6 +90,7 @@ class ExpensesService:
         # 3 Retornar
         return expenses
     
+    #Encontra o regristro pelo ID
     @staticmethod
     def get_expense_index_by_id(expenses=dict, id=id):
         try:
@@ -101,7 +102,7 @@ class ExpensesService:
         except ValueError:
             print(color.red + f"Item com ID {id} não encontrado!\n"+color.reset_color)
             return None
-        
+
 
     @staticmethod
     def print_expense_by_id(expenses, id):
@@ -120,7 +121,7 @@ class ExpensesService:
         else:
             print(f"Despesa com ID {id} não encontrada.")
 
-            
+    #Mosta todos os registros de despesa    
     @staticmethod
     def view_summary(expenses=dict):
         if not expenses or "expenses" not in expenses or not expenses["expenses"]:
@@ -138,28 +139,25 @@ class ExpensesService:
 
         print("-" * 70)
         print(f"{'':<3} {'':<5} {'':<12} {'TOTAL':<20} R${total / 100:.2f}")
-
-    
         
-
+    #exporta o Json para CSV.
     @staticmethod
     def export_json_to_csv(json_path, csv_path):
         try:
             expense = fileService.FileService.read()
-            # Verifica se o json nao esta vazio ou se a chave existe
             if "expenses" not in expense or not expense["expenses"]:
                 print("Nenhuma despesa encontrada para exportar.")
                 return
-
-            #converte para dataframe(coluna e linhas)
+            
             df = pd.DataFrame(expense["expenses"])
 
-            #exportar para CSV 
+
             df.to_csv(csv_path, index=False)
             print(f"Arquivo exportado para {csv_path}")
 
         except Exception as e:
             print(f"Erro ao exportar para CSV: {e}")
+
 
     #filtro por categoria        
     @staticmethod
