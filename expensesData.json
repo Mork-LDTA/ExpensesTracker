@@ -1,284 +1,305 @@
 {
-  "expenses": [
-    {
-      "id": 0,
-      "description": "Cafe",
-      "value": 1000,
-      "category": "Alimentacao",
-      "createdAt": "2025-08-12T08:15:12.123456"
-    },
-    {
-      "id": 1,
-      "description": "Hamburguer",
-      "value": 2500,
-      "category": "Fastfood",
-      "createdAt": "2025-08-12T09:20:15.654321"
-    },
-    {
-      "id": 2,
-      "description": "Cinema",
-      "value": 3500,
-      "category": "Lazer",
-      "createdAt": "2025-08-12T10:05:45.987654"
-    },
-    {
-      "id": 3,
-      "description": "Conta de Luz",
-      "value": 12000,
-      "category": "Contas",
-      "createdAt": "2025-08-12T11:10:32.456789"
-    },
-    {
-      "id": 4,
-      "description": "Camisa",
-      "value": 4500,
-      "category": "Roupas",
-      "createdAt": "2025-08-12T12:22:18.654987"
-    },
-    {
-      "id": 5,
-      "description": "Remédio",
-      "value": 3000,
-      "category": "Saude",
-      "createdAt": "2025-08-12T13:30:00.112233"
-    },
-    {
-      "id": 6,
-      "description": "Livro",
-      "value": 5000,
-      "category": "Outros",
-      "createdAt": "2025-08-12T14:45:12.221144"
-    },
-    {
-      "id": 7,
-      "description": "Pizza",
-      "value": 4200,
-      "category": "Fastfood",
-      "createdAt": "2025-08-12T15:12:55.331144"
-    },
-    {
-      "id": 8,
-      "description": "Almoço Buffet",
-      "value": 3800,
-      "category": "Alimentacao",
-      "createdAt": "2025-08-12T16:00:45.998877"
-    },
-    {
-      "id": 9,
-      "description": "Show Musical",
-      "value": 15000,
-      "category": "Lazer",
-      "createdAt": "2025-08-12T17:25:00.443322"
-    },
-    {
-      "id": 10,
-      "description": "Conta de Internet",
-      "value": 8900,
-      "category": "Contas",
-      "createdAt": "2025-08-12T18:05:35.129384"
-    },
-    {
-      "id": 11,
-      "description": "Calça Jeans",
-      "value": 7000,
-      "category": "Roupas",
-      "createdAt": "2025-08-12T19:14:20.923847"
-    },
-    {
-      "id": 12,
-      "description": "Consulta Médica",
-      "value": 20000,
-      "category": "Saude",
-      "createdAt": "2025-08-12T20:45:12.000111"
-    },
-    {
-      "id": 13,
-      "description": "Fones de Ouvido",
-      "value": 12000,
-      "category": "Outros",
-      "createdAt": "2025-08-12T21:30:55.888777"
-    },
-    {
-      "id": 14,
-      "description": "Sorvete",
-      "value": 1500,
-      "category": "Fastfood",
-      "createdAt": "2025-08-12T22:05:44.665544"
-    },
-    {
-      "id": 15,
-      "description": "Jantar Japonês",
-      "value": 6400,
-      "category": "Alimentacao",
-      "createdAt": "2025-08-12T23:10:10.443322"
-    },
-    {
-      "id": 16,
-      "description": "Parque de Diversões",
-      "value": 18000,
-      "category": "Lazer",
-      "createdAt": "2025-08-13T08:15:12.223344"
-    },
-    {
-      "id": 17,
-      "description": "Conta de Água",
-      "value": 4500,
-      "category": "Contas",
-      "createdAt": "2025-08-13T09:25:32.998877"
-    },
-    {
-      "id": 18,
-      "description": "Casaco de Inverno",
-      "value": 12000,
-      "category": "Roupas",
-      "createdAt": "2025-08-13T10:05:18.554433"
-    },
-    {
-      "id": 19,
-      "description": "Exames de Sangue",
-      "value": 8000,
-      "category": "Saude",
-      "createdAt": "2025-08-13T11:55:00.445566"
-    },
-    {
-      "id": 20,
-      "description": "Brinquedo",
-      "value": 3000,
-      "category": "Outros",
-      "createdAt": "2025-08-13T12:35:42.129384"
-    },
-    {
-      "id": 21,
-      "description": "Hot Dog",
-      "value": 2300,
-      "category": "Fastfood",
-      "createdAt": "2025-08-13T13:14:20.847362"
-    },
-    {
-      "id": 22,
-      "description": "Café da Manhã",
-      "value": 2700,
-      "category": "Alimentacao",
-      "createdAt": "2025-08-13T14:55:12.102938"
-    },
-    {
-      "id": 23,
-      "description": "Show de Comédia",
-      "value": 9000,
-      "category": "Lazer",
-      "createdAt": "2025-08-13T15:30:44.876543"
-    },
-    {
-      "id": 24,
-      "description": "Conta de Gás",
-      "value": 6000,
-      "category": "Contas",
-      "createdAt": "2025-08-13T16:10:32.564738"
-    },
-    {
-      "id": 25,
-      "description": "Tênis Esportivo",
-      "value": 15000,
-      "category": "Roupas",
-      "createdAt": "2025-08-13T17:22:18.657483"
-    },
-    {
-      "id": 26,
-      "description": "Dentista",
-      "value": 22000,
-      "category": "Saude",
-      "createdAt": "2025-08-13T18:05:45.918273"
-    },
-    {
-      "id": 27,
-      "description": "Relógio",
-      "value": 35000,
-      "category": "Outros",
-      "createdAt": "2025-08-13T19:45:12.273645"
-    },
-    {
-      "id": 28,
-      "description": "Sanduíche",
-      "value": 2800,
-      "category": "Fastfood",
-      "createdAt": "2025-08-13T20:30:00.837465"
-    },
-    {
-      "id": 29,
-      "description": "Churrasco",
-      "value": 5500,
-      "category": "Alimentacao",
-      "createdAt": "2025-08-13T21:25:55.283746"
-    },
-    {
-      "id": 30,
-      "description": "Teatro",
-      "value": 13000,
-      "category": "Lazer",
-      "createdAt": "2025-08-13T22:05:12.918273"
-    },
-    {
-      "id": 31,
-      "description": "Conta de Celular",
-      "value": 7500,
-      "category": "Contas",
-      "createdAt": "2025-08-13T23:15:35.182736"
-    },
-    {
-      "id": 32,
-      "description": "Vestido",
-      "value": 11000,
-      "category": "Roupas",
-      "createdAt": "2025-08-14T08:22:10.918273"
-    },
-    {
-      "id": 33,
-      "description": "Óculos de Grau",
-      "value": 25000,
-      "category": "Saude",
-      "createdAt": "2025-08-14T09:55:44.273645"
-    },
-    {
-      "id": 34,
-      "description": "Caneca",
-      "value": 1200,
-      "category": "Outros",
-      "createdAt": "2025-08-14T10:40:12.837465"
-    },
-    {
-      "id": 35,
-      "description": "Frango Frito",
-      "value": 3700,
-      "category": "Fastfood",
-      "createdAt": "2025-08-14T11:20:50.182736"
-    },
-    {
-      "id": 36,
-      "description": "Feijoada",
-      "value": 4800,
-      "category": "Alimentacao",
-      "createdAt": "2025-08-14T12:05:35.918273"
-    },
-    {
-      "id": 37,
-      "description": "Passeio de Barco",
-      "value": 21000,
-      "category": "Lazer",
-      "createdAt": "2025-08-14T13:45:22.273645"
-    },
-    {
-      "id": 38,
-      "description": "Condomínio",
-      "value": 90000,
-      "category": "Contas",
-      "createdAt": "2025-08-14T14:15:55.837465"
-    },
-    {
-      "id": 39,
-      "description": "Jaqueta",
-      "value": 13500,
-      "category": "Roupas",
-      "createdAt": "2025-08-14T15:50:10.182736"
-    }
-  ]
+    "expenses": [
+        {
+            "id": 0,
+            "description": "Cafe",
+            "value": 1000,
+            "category": "Alimentacao",
+            "createdAt": "2025-08-12T08:15:12.123456"
+        },
+        {
+            "id": 1,
+            "description": "Hamburguer",
+            "value": 2500,
+            "category": "Fastfood",
+            "createdAt": "2025-08-12T09:20:15.654321"
+        },
+        {
+            "id": 2,
+            "description": "Cinema",
+            "value": 3500,
+            "category": "Lazer",
+            "createdAt": "2025-08-12T10:05:45.987654"
+        },
+        {
+            "id": 3,
+            "description": "Conta de Luz",
+            "value": 12000,
+            "category": "Contas",
+            "createdAt": "2025-08-12T11:10:32.456789"
+        },
+        {
+            "id": 4,
+            "description": "Camisa",
+            "value": 4500,
+            "category": "Roupas",
+            "createdAt": "2025-08-12T12:22:18.654987"
+        },
+        {
+            "id": 5,
+            "description": "Rem\u00e9dio",
+            "value": 3000,
+            "category": "Saude",
+            "createdAt": "2025-08-12T13:30:00.112233"
+        },
+        {
+            "id": 6,
+            "description": "Livro",
+            "value": 5000,
+            "category": "Outros",
+            "createdAt": "2025-08-12T14:45:12.221144"
+        },
+        {
+            "id": 7,
+            "description": "Pizza",
+            "value": 4200,
+            "category": "Fastfood",
+            "createdAt": "2025-08-12T15:12:55.331144"
+        },
+        {
+            "id": 8,
+            "description": "Almo\u00e7o Buffet",
+            "value": 3800,
+            "category": "Alimentacao",
+            "createdAt": "2025-08-12T16:00:45.998877"
+        },
+        {
+            "id": 9,
+            "description": "Show Musical",
+            "value": 15000,
+            "category": "Lazer",
+            "createdAt": "2025-08-12T17:25:00.443322"
+        },
+        {
+            "id": 10,
+            "description": "Conta de Internet",
+            "value": 8900,
+            "category": "Contas",
+            "createdAt": "2025-08-12T18:05:35.129384"
+        },
+        {
+            "id": 11,
+            "description": "Cal\u00e7a Jeans",
+            "value": 7000,
+            "category": "Roupas",
+            "createdAt": "2025-08-12T19:14:20.923847"
+        },
+        {
+            "id": 12,
+            "description": "Consulta M\u00e9dica",
+            "value": 20000,
+            "category": "Saude",
+            "createdAt": "2025-08-12T20:45:12.000111"
+        },
+        {
+            "id": 13,
+            "description": "Fones de Ouvido",
+            "value": 12000,
+            "category": "Outros",
+            "createdAt": "2025-08-12T21:30:55.888777"
+        },
+        {
+            "id": 14,
+            "description": "Sorvete",
+            "value": 1500,
+            "category": "Fastfood",
+            "createdAt": "2025-08-12T22:05:44.665544"
+        },
+        {
+            "id": 15,
+            "description": "Jantar Japon\u00eas",
+            "value": 6400,
+            "category": "Alimentacao",
+            "createdAt": "2025-08-12T23:10:10.443322"
+        },
+        {
+            "id": 16,
+            "description": "Parque de Divers\u00f5es",
+            "value": 18000,
+            "category": "Lazer",
+            "createdAt": "2025-08-13T08:15:12.223344"
+        },
+        {
+            "id": 17,
+            "description": "Conta de \u00c1gua",
+            "value": 4500,
+            "category": "Contas",
+            "createdAt": "2025-08-13T09:25:32.998877"
+        },
+        {
+            "id": 18,
+            "description": "Casaco de Inverno",
+            "value": 12000,
+            "category": "Roupas",
+            "createdAt": "2025-08-13T10:05:18.554433"
+        },
+        {
+            "id": 19,
+            "description": "Exames de Sangue",
+            "value": 8000,
+            "category": "Saude",
+            "createdAt": "2025-08-13T11:55:00.445566"
+        },
+        {
+            "id": 20,
+            "description": "Brinquedo",
+            "value": 3000,
+            "category": "Outros",
+            "createdAt": "2025-08-13T12:35:42.129384"
+        },
+        {
+            "id": 21,
+            "description": "Hot Dog",
+            "value": 2300,
+            "category": "Fastfood",
+            "createdAt": "2025-08-13T13:14:20.847362"
+        },
+        {
+            "id": 22,
+            "description": "Caf\u00e9 da Manh\u00e3",
+            "value": 2700,
+            "category": "Alimentacao",
+            "createdAt": "2025-08-13T14:55:12.102938"
+        },
+        {
+            "id": 23,
+            "description": "Show de Com\u00e9dia",
+            "value": 9000,
+            "category": "Lazer",
+            "createdAt": "2025-08-13T15:30:44.876543"
+        },
+        {
+            "id": 24,
+            "description": "Conta de G\u00e1s",
+            "value": 6000,
+            "category": "Contas",
+            "createdAt": "2025-08-13T16:10:32.564738"
+        },
+        {
+            "id": 25,
+            "description": "T\u00eanis Esportivo",
+            "value": 15000,
+            "category": "Roupas",
+            "createdAt": "2025-08-13T17:22:18.657483"
+        },
+        {
+            "id": 26,
+            "description": "Dentista",
+            "value": 22000,
+            "category": "Saude",
+            "createdAt": "2025-08-13T18:05:45.918273"
+        },
+        {
+            "id": 27,
+            "description": "Rel\u00f3gio",
+            "value": 35000,
+            "category": "Outros",
+            "createdAt": "2025-08-13T19:45:12.273645"
+        },
+        {
+            "id": 28,
+            "description": "Sandu\u00edche",
+            "value": 2800,
+            "category": "Fastfood",
+            "createdAt": "2025-08-13T20:30:00.837465"
+        },
+        {
+            "id": 29,
+            "description": "Churrasco",
+            "value": 5500,
+            "category": "Alimentacao",
+            "createdAt": "2025-08-13T21:25:55.283746"
+        },
+        {
+            "id": 30,
+            "description": "Teatro",
+            "value": 13000,
+            "category": "Lazer",
+            "createdAt": "2025-08-13T22:05:12.918273"
+        },
+        {
+            "id": 31,
+            "description": "Conta de Celular",
+            "value": 7500,
+            "category": "Contas",
+            "createdAt": "2025-08-13T23:15:35.182736"
+        },
+        {
+            "id": 32,
+            "description": "Vestido",
+            "value": 11000,
+            "category": "Roupas",
+            "createdAt": "2025-08-14T08:22:10.918273"
+        },
+        {
+            "id": 33,
+            "description": "\u00d3culos de Grau",
+            "value": 25000,
+            "category": "Saude",
+            "createdAt": "2025-08-14T09:55:44.273645"
+        },
+        {
+            "id": 34,
+            "description": "Caneca",
+            "value": 1200,
+            "category": "Outros",
+            "createdAt": "2025-08-14T10:40:12.837465"
+        },
+        {
+            "id": 35,
+            "description": "Frango Frito",
+            "value": 3700,
+            "category": "Fastfood",
+            "createdAt": "2025-08-14T11:20:50.182736"
+        },
+        {
+            "id": 36,
+            "description": "Feijoada",
+            "value": 4800,
+            "category": "Alimentacao",
+            "createdAt": "2025-08-14T12:05:35.918273"
+        },
+        {
+            "id": 37,
+            "description": "Passeio de Barco",
+            "value": 21000,
+            "category": "Lazer",
+            "createdAt": "2025-08-14T13:45:22.273645"
+        },
+        {
+            "id": 38,
+            "description": "Condom\u00ednio",
+            "value": 90000,
+            "category": "Contas",
+            "createdAt": "2025-08-14T14:15:55.837465"
+        },
+        {
+            "id": 39,
+            "description": "Jaqueta",
+            "value": 13500,
+            "category": "Roupas",
+            "createdAt": "2025-02-14T15:50:10.182736"
+        },
+        {
+            "id": 40,
+            "description": "Feijao",
+            "value": 3000,
+            "category": "Alimentacao",
+            "createdAt": "2025-02-15T17:08:54.168091"
+        },
+        {
+            "id": 41,
+            "description": "MACBOOK",
+            "value": 900000,
+            "category": "Outos",
+            "createdAt": "2025-02-15T17:40:29.670707"
+        },
+        {
+            "id": 42,
+            "description": "Bone",
+            "value": 9000,
+            "category": "Outos",
+            "createdAt": "2025-02-15T17:43:06.773715"
+        }
+    ]
 }

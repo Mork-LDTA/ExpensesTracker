@@ -13,7 +13,6 @@ expenses_service = expensesService.ExpensesService
 file_service = fileService.FileService
 teste = file_service.read_formmated()
 
-
 def clear_terminal():
     if os.name == "nt": 
         os.system("cls")
@@ -30,7 +29,7 @@ def confirm_menu_return():
 
 
 def menu():
-    expense = file_service.read()
+    expense = file_service.open()
     Headers.menu()
     selection = int(input("\nNUM : "))
     print()
@@ -54,50 +53,65 @@ def menu():
             confirm_menu_return()
             
         elif selection == 2:
-            print(color.white +"=="*20 + "\n")
-            idExpense = int(input("Digite o ID da despesa: "))
-            index = expenses_service.get_expense_index_by_id(expense, idExpense)
-            if type(index) == int:
-                print("\n[Pressione enter se caso queira deixar antigo]\n")
-                description = input("Digite a nova descrição da despesa: ")
-                value_str = input("\nDigite o valor da despesa: ")
-                choice = expenses_service.category_user_expenses()
-                if value_str.strip() == "":
-                    value = None
-                else:
-                    value = int(value_str)
-                expense = expenses_service.edit_expense(expenses=expense, id=idExpense,description=description,value=value, category=choice)
-                file_service.write(expense)
-                print("=="*20+color.reset_color)
-            print()
-            confirm_menu_return()
+            print(color.white +"=="*20 + "\n"+color.reset_color)
+            idExpense = input("Digite o ID da despesa: ").strip()
+            if idExpense == "":
+                print("ID Nao encontrado")
+            else:
+                idExpense = int(idExpense)
+                index = expenses_service.get_expense_index_by_id(expense, idExpense)
+                if type(index) == int:
+                    print("\n[Pressione enter se caso queira deixar antigo]\n")
+                    expenses_service.print_expense_by_id(expenses=expense, id=idExpense)
+                    description = input("Digite a nova descrição da despesa: ")
+                    print()
+                    value_str = input("\nDigite o valor da despesa: ")
+                    print()
+                    category_choice = input("Digite o Valor correspondente de uma das categorias: ").strip()
+                    if category_choice == "":
+                        confirm_menu_return()
+                    if value_str.strip() == "":
+                        value = None
+                    else:
+                        category_choice = int(category_choice)
+                        category_choice = expenses_service.category_user_expenses()
+                        value = int(value_str)
+                    expense = expenses_service.edit_expense(expenses=expense, id=idExpense,description=description,value=value, category=category_choice)
+                    file_service.write(expense)
+                    print("=="*20+color.reset_color)
+                print()
+                confirm_menu_return()
 
 
         elif selection == 3:
             print("=="*20 + "\n")
             idExpense = int(input(color.white + "Digite o Id da despesa: " + color.reset_color))
             print()
-            expenses_service.getExpenseIndexById(expenses=expense, id=idExpense)
-            confirmDelete = None
-            while confirmDelete not in [1, 2]:
-                try:
-                    expenses_service.printExpenseById(expenses=expense, id=idExpense)
-                    selection = input("\nConfirme a exclusao?\n\n 1. Sim\n 2. Não\n\nResposta: ").strip()
-                    confirmDelete = int(selection)
-                    
-                    if confirmDelete not in [1, 2]:
-                        print("Por favor, digite 1 ou 2.")
-                    elif confirmDelete == 2:
-                        confirm_menu_return()
-                    elif confirmDelete == 1:
-                        expenses_service.getExpenseIndexById(expenses=expense, id=idExpense)
-                        expenses_service.removeExpense(expenses=expense, id=idExpense)
-                        file_service.write(expense)
-                        confirm_menu_return()
+            if idExpense == "":
+                print("ID Nao encontrado")
+            else:
+                idExpense = int(idExpense)
+                expenses_service.get_expense_index_by_id(expenses=expense, id=idExpense)
+                confirmDelete = None
+                while confirmDelete not in [1, 2]:
+                    try:
+                        expenses_service.print_expense_by_id(expenses=expense, id=idExpense)
+                        selection = input("\nConfirme a exclusao?\n\n 1. Sim\n 2. Não\n\nResposta: ").strip()
+                        confirmDelete = int(selection)
+                        
+                        if confirmDelete not in [1, 2]:
+                            print("Por favor, digite 1 ou 2.")
+                        elif confirmDelete == 2:
+                            confirm_menu_return()
+                        elif confirmDelete == 1:
+                            expenses_service.getExpenseIndexById(expenses=expense, id=idExpense)
+                            expenses_service.removeExpense(expenses=expense, id=idExpense)
+                            file_service.write(expense)
+                            confirm_menu_return()
 
-                except ValueError:
-                    print(color.red + "\nEntrada invalida. Digite um numero: 1 ou 2"+color.reset_color)    
-                          
+                    except ValueError:
+                        print(color.red + "\nEntrada invalida. Digite um numero: 1 ou 2"+color.reset_color)    
+                            
         elif selection == 4:
             while True:
                 Headers.bars("VER SUMARIO")
@@ -113,8 +127,12 @@ def menu():
                 if selection == 1:
                     expenses_service.view_summary(expense)
                     confirm_menu_return()
+                elif selection == 2:
+                    expenses_service.get_expense_by_month()
+                    confirm_menu_return()
                 elif selection == 3:
                     expenses_service.get_expense_index_by_category()
+                    confirm_menu_return()
                 elif selection == 4:
                     confirm_menu_return()
                     
@@ -132,7 +150,10 @@ def menu():
             else:
                 print("Valor invalido, por favor digite um número valido")
                 
-
+        elif selection == 6:
+            file_service.db_uptade_from_json("expensesData.json", "expenses.db")
+            confirm_menu_return()
+            
         elif selection == 0:
             print("Encerrando...")
             time.sleep(2)
