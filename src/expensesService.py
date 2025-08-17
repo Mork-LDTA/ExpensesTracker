@@ -5,9 +5,6 @@ import fileService
 import Headers
 import fileService
 
-
-
-
 class ExpensesService:
     file_service = fileService.FileService
     expense = file_service.open()
@@ -162,18 +159,18 @@ class ExpensesService:
     def get_month_by_user():
         print("Selecione o Mes que deseja: \n")
         print(color.yellow+'''    
-    1.Janeiro 
-    2.Feveiro
-    3.Marco
-    4.Abril
-    5.Maio
-    6.Junho
-    7.Julho
-    8.Agosto
-    9.Setembro
-    10.Outubro
-    11.Novembro
-    12.Dezembro\n\n''' + color.reset_color)
+    1. Janeiro 
+    2. Feveiro
+    3. Marco
+    4. Abril
+    5. Maio
+    6. Junho
+    7. Julho
+    8. Agosto
+    9. Setembro
+    10. Outubro
+    11. Novembro
+    12. Dezembro\n\n''' + color.reset_color)
         month_select = int(input("NUM: "))
         return month_select
 
@@ -196,6 +193,7 @@ class ExpensesService:
             print("Nenhuma despesa encontrada para este mes.")
             return
         else:
+            print("\n")
             print(f"{'#':<3} {'ID':<5} {'Date':<12} {'Description':<20} {'Category':<15} {'Amount':>10}")
             print("-" * 70)
             total = 0
@@ -230,6 +228,7 @@ class ExpensesService:
             print(f"\nNenhuma despesa encontrada para a categoria '{chosen_category}'.")
             return filtered
 
+        print("\n")
         print(f"{'#':<3} {'ID':<5} {'Date':<12} {'Description':<20} {'Category':<15} {'Amount':>10}")
         print("-" * 70)
 
@@ -244,3 +243,40 @@ class ExpensesService:
         print(f"{'':<3} {'':<5} {'':<12} {'TOTAL':<20} R${total / 100:.2f}")
 
         return filtered
+
+
+    @staticmethod
+    def set_limit_budget():
+        limit = fileService.FileService.load_limit_budget()
+        if limit is not None:
+            print("Limite de despesas ja definido")
+            return
+        else:
+            print("Defina um valor para o limite de despesas:\n")
+            limit = int(input("Valor: \n"))
+            fileService.FileService.save_limit_budget(limit)
+            print("Limite definido:\n", limit)
+            return limit
+            
+    @staticmethod
+    def limit_budget_check():
+        ExpensesService.expense = fileService.FileService.open()
+        total = sum(expense['value'] for expense in ExpensesService.expense["expenses"])
+        limit = fileService.FileService.load_limit_budget()
+        if limit is not None and total > limit:
+            print(color.red + "Limite de despesas excedido" + color.reset_color)
+
+    @staticmethod
+    def remove_limit_budget():
+        global limit_budget
+        limit_budget = None
+        fileService.FileService.save_limit_budget(limit_budget)
+        print("Limite removido.")
+
+    @staticmethod
+    def edit_limit_budget():
+        global limit_budget
+        print("Digite o novo valor para o limite de despesas:")
+        limit_budget = int(input("Novo valor: \n"))
+        fileService.FileService.save_limit_budget(limit_budget)
+        print("Limite editado.")

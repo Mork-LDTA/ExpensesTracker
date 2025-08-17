@@ -1,4 +1,4 @@
-#Os usuários podem visualizar um resumo das despesas para um mês específico (do ano atual).
+#Os usuários podem visualizar um resumo das despesas para um mês específico (do ano atual). CONCLUIDO
 import time
 import Headers
 import fileService
@@ -20,10 +20,10 @@ def clear_terminal():
         os.system("clear")
 
 def confirm_menu_return():
-    print("\nDeseja voltar ao Menu?\n")
-    print("1.Voltar\n")
-    print("2.Continuar\n")
-    return_choice = int(input("Opção: "))
+    print("\nDeseja voltar ao Menu Inicial?\n")
+    print("1. Sim")
+    print("2. Nao\n")
+    return_choice = int(input("Opção: \n\n"))
     if return_choice == 1:
         menu()
 
@@ -31,6 +31,7 @@ def confirm_menu_return():
 def menu():
     expense = file_service.open()
     Headers.menu()
+    expenses_service.limit_budget_check()
     selection = int(input("\nNUM : "))
     print()
     while True:
@@ -117,13 +118,14 @@ def menu():
                 Headers.bars("VER SUMARIO")
                 print(color.white+"Filtrar por:\n")
                 print(color.yellow+
-                    "   1.Ver tudo\n" \
-                    "   2.Filtrar por mes\n" \
-                    "   3.Filtrar por categoria\n" \
-                    "   4.Voltar\n"
+                    "   1. Ver tudo\n" \
+                    "   2. Filtrar por mes\n" \
+                    "   3. Filtrar por categoria\n" \
+                    "   4. Voltar\n"
                 +color.reset_color)
                 print(color.white +"=="*20 + "\n"+color.reset_color)
                 selection = int(input("Opção: "))
+                print()
                 if selection == 1:
                     expenses_service.view_summary(expense)
                     confirm_menu_return()
@@ -132,14 +134,40 @@ def menu():
                     confirm_menu_return()
                 elif selection == 3:
                     expenses_service.get_expense_index_by_category()
+                    print()
                     confirm_menu_return()
                 elif selection == 4:
                     confirm_menu_return()
-                    
+
         elif selection == 5:
+            while True:
+                Headers.bars("LIMITE DE DESPESAS")
+                print(color.yellow+
+                    "\n   1. Adicionar limite\n" \
+                    "   2. Remover limite\n" \
+                    "   3. Editar limite\n" \
+                    "   4. Voltar\n"
+                +color.reset_color)
+                print(color.white +"=="*20 + "\n"+color.reset_color)
+                selection = int(input("Opção: "))
+                if selection == 1:
+                    expenses_service.set_limit_budget()
+                    confirm_menu_return()
+                elif selection == 2:
+                    expenses_service.remove_limit_budget()
+                    confirm_menu_return()
+                elif selection == 3:
+                    expenses_service.edit_limit_budget()
+                    confirm_menu_return()
+                elif selection == 4:
+                    confirm_menu_return()
+            
+
+                    
+        elif selection == 6:
             user_aswer = int(input("Deseja exportar para CSV?\n" \
-                                        "1- SIM\n" \
-                                        "2- NAO\n" \
+                                        "1. SIM\n" \
+                                        "2. NAO\n" \
                                         "Opcao: "))
             if user_aswer == 1:
                 expenses_service.export_json_to_csv("expensesData.json", "expensesData.csv")
@@ -150,7 +178,7 @@ def menu():
             else:
                 print("Valor invalido, por favor digite um número valido")
                 
-        elif selection == 6:
+        elif selection == 7:
             file_service.db_uptade_from_json("expensesData.json", "expenses.db")
             confirm_menu_return()
             
