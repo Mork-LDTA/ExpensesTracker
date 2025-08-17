@@ -1,4 +1,5 @@
-#Os usuários podem visualizar um resumo das despesas para um mês específico (do ano atual). CONCLUIDO
+#Erro ao remover despesa
+
 import time
 import Headers
 import fileService
