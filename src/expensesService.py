@@ -10,9 +10,10 @@ class ExpensesService:
     expense = file_service.open()
     @staticmethod
     def category_user_expenses():
-        category_list = ("Fastfood", "Alimentacao", "Lazer", "Contas", "Roupas", "Saude", "Outos")
+        category_list = ("Fastfood", "Alimentacao", "Lazer", "Contas", "Roupas", "Saude", "Outros")
         while True:
             try:
+                print("PASSOU POR AQUI")
                 Headers.category_expense()
                 category_user_choice = int(input("Categoria: ")) - 1
                 if 0 <= category_user_choice < len(category_list):
@@ -57,7 +58,6 @@ class ExpensesService:
      
     @staticmethod   
     def remove_expense(expenses=dict, id=int):
-
         index = ExpensesService.get_expense_index_by_id(expenses=expenses, id=id)
         if type(index) == int:
             expenses["expenses"].pop(index)
@@ -261,10 +261,12 @@ class ExpensesService:
     @staticmethod
     def limit_budget_check():
         ExpensesService.expense = fileService.FileService.open()
-        total = sum(expense['value'] for expense in ExpensesService.expense["expenses"])
+
+        total_expense = sum(expense['value'] for expense in ExpensesService.expense["expenses"])
         limit = fileService.FileService.load_limit_budget()
-        if limit is not None and total > limit:
-            print(color.red + "Limite de despesas excedido" + color.reset_color)
+        if limit is not None and total_expense > limit:
+            print(color.red + f"Limite de despesas excedido! Gastos: {total_expense}, Limite: {limit}" + color.reset_color)
+        return total_expense > limit if limit is not None else False
 
     @staticmethod
     def remove_limit_budget():

@@ -1,10 +1,11 @@
 import json
 import sqlite3
 
-LIMIT_FILE = "limit_budget.json"
+
 
 
 class FileService():
+    limit_file = "limit_budget.json"
     json_file = "expensesData.json"
     db_file = "expenses.db"
     
@@ -91,13 +92,13 @@ class FileService():
 
     @staticmethod
     def save_limit_budget(value):
-        with open(LIMIT_FILE, "w") as f:
+        with open(FileService.limit_file, "w") as f:
             json.dump({"limit_budget": value}, f)
 
     @staticmethod
     def load_limit_budget():
         try:
-            with open(LIMIT_FILE, "r") as f:
+            with open(FileService.limit_file, "r") as f:
                 data = json.load(f)
                 return data.get("limit_budget", None)
         except FileNotFoundError:

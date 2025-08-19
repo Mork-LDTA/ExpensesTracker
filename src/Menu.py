@@ -21,37 +21,48 @@ def clear_terminal():
         os.system("clear")
 
 def confirm_menu_return():
-    print("\nDeseja voltar ao Menu Inicial?\n")
+    print(color.cyan + "\nDeseja voltar ao Menu Inicial?\n")
     print("1. Sim")
-    print("2. Nao\n")
-    return_choice = int(input("Opção: \n\n"))
+    print("2. Nao\n"+ color.reset_color)
+    try:
+        return_choice = int(input("Opção: "))
+    except ValueError:
+        print(color.red+"\nOpcao Invalida"+color.reset_color)
+        return confirm_menu_return()
     if return_choice == 1:
         menu()
-
+    #elif return_choice == 
 
 def menu():
     expense = file_service.open()
     Headers.menu()
     expenses_service.limit_budget_check()
-    selection = int(input("\nNUM : "))
+    try:
+        selection = int(input("\nNUM : "))
+    except ValueError:
+        clear_terminal()
+        return menu()
     print()
     while True:
         if selection == 1:
             print("=="*20)
             print()
-            description = input("Digite a descrição da despesa: ")
-            value_str = input("\nDigite o valor da despesa: ")
-            if value_str.strip() == "":
-                print("voce nao inseriu nenhum valor! ")
-                confirm_menu_return()
-                value = None
-            else:
-                value = int(value_str)
-            choice = expenses_service.category_user_expenses()
-            expense = expenses_service.add_expense(expenses=expense ,description=description, value=value, category=choice)
-            file_service.write(expense) 
-            print("=="*20)
-            print()
+            
+            description = input("Digite a descrição da despesa: ").strip()
+            while True:
+                try:
+                    value_str = int(input("\nDigite o valor da despesa: "))
+                    if value_str != None:
+                        break
+                except TypeError:
+                    print(color.red + "Voce Digitou um valor incorreto!"+color.reset_color)
+                    
+            if value_str == int:         
+                choice = expenses_service.category_user_expenses()
+                expense = expenses_service.add_expense(expenses=expense ,description=description, value=value, category=choice)
+                file_service.write(expense) 
+                print("=="*20)
+                print()
             confirm_menu_return()
             
         elif selection == 2:
@@ -59,6 +70,7 @@ def menu():
             idExpense = input("Digite o ID da despesa: ").strip()
             if idExpense == "":
                 print("ID Nao encontrado")
+                return confirm_menu_return()
             else:
                 idExpense = int(idExpense)
                 index = expenses_service.get_expense_index_by_id(expense, idExpense)
@@ -69,11 +81,12 @@ def menu():
                     print()
                     value_str = input("\nDigite o valor da despesa: ")
                     print()
+                    Headers.category_expense()
                     category_choice = input("Digite o Valor correspondente de uma das categorias: ").strip()
                     if category_choice == "":
                         confirm_menu_return()
                     if value_str.strip() == "":
-                        value = None
+                        confirm_menu_return()
                     else:
                         category_choice = int(category_choice)
                         category_choice = expenses_service.category_user_expenses()
@@ -106,8 +119,8 @@ def menu():
                         elif confirmDelete == 2:
                             confirm_menu_return()
                         elif confirmDelete == 1:
-                            expenses_service.getExpenseIndexById(expenses=expense, id=idExpense)
-                            expenses_service.removeExpense(expenses=expense, id=idExpense)
+                            expenses_service.get_expense_index_by_id(expenses=expense, id=idExpense)
+                            expenses_service.remove_expense(expenses=expense, id=idExpense)
                             file_service.write(expense)
                             confirm_menu_return()
 
@@ -125,7 +138,11 @@ def menu():
                     "   4. Voltar\n"
                 +color.reset_color)
                 print(color.white +"=="*20 + "\n"+color.reset_color)
-                selection = int(input("Opção: "))
+                try: 
+                    selection = int(input("Opção: "))
+                except ValueError:
+                    print(color.red+"Opcao Invalida"+color.reset_color)
+                    return menu()
                 print()
                 if selection == 1:
                     expenses_service.view_summary(expense)

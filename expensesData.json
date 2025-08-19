@@ -2,9 +2,9 @@
     "expenses": [
         {
             "id": 0,
-            "description": "Cafe",
+            "description": "",
             "value": 1000,
-            "category": "Alimentacao",
+            "category": "",
             "createdAt": "2025-08-12T08:15:12.123456"
         },
         {
@@ -300,13 +300,7 @@
             "value": 9000,
             "category": "Outos",
             "createdAt": "2025-02-15T17:43:06.773715"
-        },
-        {
-            "id": 43,
-            "description": "arroz",
-            "value": 1990,
-            "category": "Alimentacao",
-            "createdAt": "2025-08-17T13:33:48.075015"
         }
+        
     ]
 }
