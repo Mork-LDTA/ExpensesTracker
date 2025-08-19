@@ -293,14 +293,6 @@
             "value": 900000,
             "category": "Outos",
             "createdAt": "2025-02-15T17:40:29.670707"
-        },
-        {
-            "id": 42,
-            "description": "Bone",
-            "value": 9000,
-            "category": "Outos",
-            "createdAt": "2025-02-15T17:43:06.773715"
         }
-        
     ]
 }

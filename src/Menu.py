@@ -31,7 +31,7 @@ def confirm_menu_return():
         return confirm_menu_return()
     if return_choice == 1:
         menu()
-    #elif return_choice == 
+
 
 def menu():
     expense = file_service.open()
@@ -51,13 +51,14 @@ def menu():
             description = input("Digite a descrição da despesa: ").strip()
             while True:
                 try:
-                    value_str = int(input("\nDigite o valor da despesa: "))
-                    if value_str != None:
+                    value_expense = int(input("\nDigite o valor da despesa: "))
+                    if value_expense != None or value_expense == "":
                         break
-                except TypeError:
+                except ValueError:
                     print(color.red + "Voce Digitou um valor incorreto!"+color.reset_color)
+                    confirm_menu_return()
                     
-            if value_str == int:         
+            if value_expense == int:         
                 choice = expenses_service.category_user_expenses()
                 expense = expenses_service.add_expense(expenses=expense ,description=description, value=value, category=choice)
                 file_service.write(expense) 
@@ -79,18 +80,18 @@ def menu():
                     expenses_service.print_expense_by_id(expenses=expense, id=idExpense)
                     description = input("Digite a nova descrição da despesa: ")
                     print()
-                    value_str = input("\nDigite o valor da despesa: ")
+                    value_expense = input("\nDigite o valor da despesa: ")
                     print()
                     Headers.category_expense()
                     category_choice = input("Digite o Valor correspondente de uma das categorias: ").strip()
                     if category_choice == "":
                         confirm_menu_return()
-                    if value_str.strip() == "":
+                    if value_expense.strip() == "":
                         confirm_menu_return()
                     else:
                         category_choice = int(category_choice)
                         category_choice = expenses_service.category_user_expenses()
-                        value = int(value_str)
+                        value = int(value_expense)
                     expense = expenses_service.edit_expense(expenses=expense, id=idExpense,description=description,value=value, category=category_choice)
                     file_service.write(expense)
                     print("=="*20+color.reset_color)
