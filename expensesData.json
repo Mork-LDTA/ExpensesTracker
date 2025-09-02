@@ -286,13 +286,6 @@
             "value": 3000,
             "category": "Alimentacao",
             "createdAt": "2025-02-15T17:08:54.168091"
-        },
-        {
-            "id": 41,
-            "description": "MACBOOK",
-            "value": 900000,
-            "category": "Outos",
-            "createdAt": "2025-02-15T17:40:29.670707"
         }
     ]
 }

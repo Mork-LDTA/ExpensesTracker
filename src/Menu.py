@@ -1,4 +1,5 @@
-#Erro ao remover despesa
+
+
 
 import time
 import Headers
@@ -21,6 +22,7 @@ def clear_terminal():
         os.system("clear")
 
 def confirm_menu_return():
+    print()
     print(color.cyan + "\nDeseja voltar ao Menu Inicial?\n")
     print("1. Sim")
     print("2. Nao\n"+ color.reset_color)
@@ -52,18 +54,16 @@ def menu():
             while True:
                 try:
                     value_expense = int(input("\nDigite o valor da despesa: "))
-                    if value_expense != None or value_expense == "":
-                        break
+                    break   
                 except ValueError:
                     print(color.red + "Voce Digitou um valor incorreto!"+color.reset_color)
                     confirm_menu_return()
-                    
-            if value_expense == int:         
-                choice = expenses_service.category_user_expenses()
-                expense = expenses_service.add_expense(expenses=expense ,description=description, value=value, category=choice)
-                file_service.write(expense) 
-                print("=="*20)
-                print()
+                                            
+            choice = expenses_service.category_user_expenses()
+            expense = expenses_service.add_expense(expenses=expense ,description=description, value=value_expense, category=choice)
+            file_service.write(expense) 
+            print("=="*20)
+            print()
             confirm_menu_return()
             
         elif selection == 2:
@@ -101,10 +101,11 @@ def menu():
 
         elif selection == 3:
             print("=="*20 + "\n")
-            idExpense = int(input(color.white + "Digite o Id da despesa: " + color.reset_color))
+            idExpense = (input(color.white + "Digite o Id da despesa: " + color.reset_color))
             print()
             if idExpense == "":
                 print("ID Nao encontrado")
+                confirm_menu_return()
             else:
                 idExpense = int(idExpense)
                 expenses_service.get_expense_index_by_id(expenses=expense, id=idExpense)
