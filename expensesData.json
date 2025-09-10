@@ -274,18 +274,18 @@
             "createdAt": "2025-08-14T14:15:55.837465"
         },
         {
-            "id": 39,
-            "description": "Jaqueta",
-            "value": 13500,
-            "category": "Roupas",
-            "createdAt": "2025-02-14T15:50:10.182736"
-        },
-        {
             "id": 40,
             "description": "Feijao",
             "value": 3000,
             "category": "Alimentacao",
             "createdAt": "2025-02-15T17:08:54.168091"
+        },
+        {
+            "id": 41,
+            "description": "milho",
+            "value": 30,
+            "category": "Alimentacao",
+            "createdAt": "2025-09-10T10:09:00.476842"
         }
     ]
 }
